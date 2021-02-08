@@ -1,0 +1,32 @@
+@import '../App/styleVariables.scss';
+
+.contactList {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+  line-height: 20px;
+}
+
+.contactListItem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  padding: 3px;
+  border-bottom: 1px solid $divider-color;
+
+  &:hover {
+    background-color: $light-primary-color;
+    color: $primary-text;
+    border-radius: 5px;
+  }
+}
+
+.findedTittle {
+  padding: 10px;
+
+  & span {
+    color: $accent-color;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,66 @@
+@import './styleVariables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $light-primary-color;
+  color: $text-icons-color;
+}
+
+h1,
+h2 {
+  margin: 15px;
+  color: $primary-text;
+  font-family: 'Sigmar One', cursive;
+  text-transform: uppercase;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    font-size: 1.4rem;
+  }
+}
+
+input {
+  width: 90%;
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+label {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.contactsTittle {
+  color: $accent-color;
+  font-size: 1.7rem;
+}
+
+.wrapper {
+  padding: 15px;
+  padding-top: 0;
+  height: 100%;
+  background-color: $dark-primary-color;
+  margin: 0 auto;
+  width: 35%;
+
+  @media screen and (max-width: 767px) {
+    width: 80%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 60%;
+  }
+}
+
+.contactListWrapper {
+  background-color: $primary-color;
+  padding: 20px;
+  border-radius: 10px;
+}
