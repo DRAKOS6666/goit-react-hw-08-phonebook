@@ -1,8 +1,7 @@
 {
-  "name": "goit-react-hw-02-phonebook",
+  "name": "goit-react-hw-07-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://drakos6666.github.io/goit-react-hw-03-phonebook/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^4.2.4",
