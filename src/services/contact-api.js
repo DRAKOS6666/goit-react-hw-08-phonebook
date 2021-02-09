@@ -14,6 +14,4 @@ export async function addContact(contact) {
 export async function deleteContact(id) {
   const result = await axios.delete(`/contacts/${id}`);
   return result;
-  // const data = await axios.delete(`/contacts/${id}`);
-  // return data;
 }
