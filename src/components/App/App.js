@@ -16,6 +16,7 @@ function App() {
   useEffect(() => {
     dispatch(contactsOperations.getContacts());
   }, [dispatch]);
+  console.log('error', error);
 
   return (
     <div className="wrapper">
@@ -27,12 +28,12 @@ function App() {
       </h2>
 
       {contacts.length > 0 ? (
-        <>
+        <div className="contactListWrapper">
           <Filter />
-          <div className="contactListWrapper">
-            {error && <p>Sorry, an error occurred: {error}</p>} <ContactList />
-          </div>
-        </>
+          {error && <p>Sorry, an error occurred: {error}</p>} <ContactList />
+        </div>
+      ) : error ? (
+        <h3>Contacts download failed</h3>
       ) : (
         <h3>Please add contacts...</h3>
       )}
