@@ -33,7 +33,7 @@ function App() {
           {error && <p>Sorry, an error occurred: {error}</p>} <ContactList />
         </div>
       ) : error ? (
-        <h3>Contacts download failed</h3>
+        <h3>Contactsf download failed</h3>
       ) : (
         <h3>Please add contacts...</h3>
       )}
