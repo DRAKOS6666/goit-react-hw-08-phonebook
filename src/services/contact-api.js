@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 
 export async function getContacts() {
   const { data } = await axios.get(`/contacts`);
@@ -13,5 +13,10 @@ export async function addContact(contact) {
 
 export async function deleteContact(id) {
   const result = await axios.delete(`/contacts/${id}`);
+  return result;
+}
+
+export async function changeContact(id) {
+  const result = await axios.patch(`/contacts/${id}`);
   return result;
 }

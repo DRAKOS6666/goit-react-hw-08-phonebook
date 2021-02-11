@@ -14,16 +14,6 @@ export const getContacts = createAsyncThunk(
   },
 );
 
-// export const getContacts = () => async dispatch => {
-//   dispatch(contactsActions.fetchContactsRequest());
-
-//   try {
-//     const contacts = await contactsApi.getContacts();
-//     dispatch(contactsActions.fetchContactsSuccess(contacts));
-//   } catch (error) {
-//     dispatch(contactsActions.fetchContactsError(error));
-//   }
-// };
 export const addContact = createAsyncThunk(
   'contacts/add',
   async (contact, { rejectWithValue }) => {
@@ -37,16 +27,6 @@ export const addContact = createAsyncThunk(
     }
   },
 );
-
-// export const addContact = contact => async dispatch => {
-//   dispatch(contactsActions.addContactRequest());
-//   try {
-//     const addedContact = await contactsApi.addContacts(contact);
-//     dispatch(contactsActions.addContactSuccess(addedContact));
-//   } catch (error) {
-//     dispatch(contactsActions.addContactError(error));
-//   }
-// };
 
 export const deleteContact = createAsyncThunk(
   'contacts/delete',
@@ -62,13 +42,3 @@ export const deleteContact = createAsyncThunk(
     }
   },
 );
-
-// export const deleteContact = id => async dispatch => {
-//   dispatch(contactsActions.deleteContactRequest());
-//   try {
-//     await contactsApi.deleteContacts(id);
-//     dispatch(contactsActions.deleteContactSuccess(id));
-//   } catch (error) {
-//     dispatch(contactsActions.deleteContactError(error));
-//   }
-// };

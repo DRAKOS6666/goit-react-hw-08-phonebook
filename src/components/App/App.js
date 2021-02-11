@@ -1,42 +1,50 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import { contactsSelectors, contactsOperations } from 'redux/contacts';
 
-import ContactForm from '../ContactForm/ContactForm';
-import ContactList from '../ContactList/ContactList';
-import Filter from '../Filter/Filter';
+import Contacts from 'components/Contacts/Contacts';
+import Register from 'views/Register';
+import Login from 'views/Login';
+import Home from 'views/Home/Home';
 
+import 'views/Home/Home.scss';
 import './App.scss';
 
 function App() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(contactsSelectors.getContacts);
-  const error = useSelector(contactsSelectors.getError);
-
-  useEffect(() => {
-    dispatch(contactsOperations.getContacts());
-  }, [dispatch]);
-  console.log('error', error);
-
   return (
     <div className="wrapper">
-      <h1>DRAKOS Phonebook</h1>
-      <ContactForm />
-
-      <h2>
-        Contacts: <span className="contactsTittle">{contacts.length}</span>
-      </h2>
-
-      {contacts.length > 0 ? (
-        <div className="contactListWrapper">
-          <Filter />
-          {error && <p>Sorry, an error occurred: {error}</p>} <ContactList />
-        </div>
-      ) : error ? (
-        <h3>Contactsf download failed</h3>
-      ) : (
-        <h3>Please add contacts...</h3>
-      )}
+      <nav className="navBar">
+        <NavLink
+          activeStyle={{ color: '#448AFF' }}
+          className="navBtn"
+          to="/login"
+        >
+          Login
+        </NavLink>
+        <NavLink
+          activeStyle={{ color: '#448AFF' }}
+          className="navBtn"
+          to="/register"
+        >
+          Registration
+        </NavLink>
+      </nav>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/contacts">
+          <Contacts />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }

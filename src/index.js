@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
+import { BrowserRouter } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
 import store from './redux/store';
@@ -20,7 +21,9 @@ ReactDOM.render(
         draggable
         pauseOnHover
       />
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
       <ToastContainer />
     </Provider>
   </React.StrictMode>,
