@@ -5,6 +5,7 @@ import { contactsSelectors, contactsOperations } from 'redux/contacts';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
+import { NavLink } from 'react-router-dom';
 
 const Contacts = () => {
   const error = useSelector(contactsSelectors.getError);
@@ -14,10 +15,17 @@ const Contacts = () => {
   useEffect(() => {
     dispatch(contactsOperations.getContacts());
   }, [dispatch]);
-  console.log('error', error);
+
   return (
     <>
-      <h1>DRAKOS Phonebook</h1>
+      
+      <NavLink
+          activeStyle={{ color: '#0288D1' }}
+          to="/"
+          exact
+        >
+          <h1>DRAKOS Phonebook</h1>
+        </NavLink>
       <ContactForm />
 
       <h2>

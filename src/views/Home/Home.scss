@@ -1,21 +1,47 @@
 @import 'components/App/styleVariables.scss';
-.navBar {
-  display: flex;
-  justify-content: center;
 
-  .navBtn {
-    min-width: 150px;
-    max-width: 300px;
-    height: 35px;
-    text-align: center;
-    line-height: 35px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: $text-icons-color;
-    background-color: $accent-color;
-    box-shadow: 1px 1px 4px black;
-    margin: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-  }
+.navBtn {
+  min-width: 120px;
+  max-width: 200px;
+  height: 35px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 35px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $text-icons-color;
+  background-color: $accent-color;
+  box-shadow: 1px 1px 4px black;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.homeImg {
+  width: 100%;
+}
+
+.appTitle {
+}
+
+.appTitle::before {
+  position: relative;
+  left: 35px;
+  top: 20px;
+  display: inline-block;
+  content: "Welcome to";
+  /* transform: rotate(
+-35deg
+); */
+  font-size: 1rem;
+  color: $divider-color;
+
+}
+
+.welcomeText {
+  transform: rotate(-35deg);
+    position: relative;
+    left: 55px;
+    top: 40px;
+    display: inline-block;
 }

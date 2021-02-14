@@ -7,7 +7,13 @@ import { toast } from 'react-toastify';
 
 import './ContactListItem.scss';
 
+
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 function ContactListItem({ contact }) {
+  const classes = makeStyles();
   const { id, name, number } = contact;
   const dispatch = useDispatch();
   const filter = useSelector(contactsSelectors.getFilter);
@@ -40,12 +46,21 @@ function ContactListItem({ contact }) {
         <a className="callRef" href={'tel:' + number}>
           Call
         </a>
-        <button
+        <Button
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        startIcon={<DeleteIcon />}
+        onClick={() => handleDeleteContact(id)}
+      >
+        Delete
+      </Button>
+        {/* <button
           className="deleteContactBtn"
           onClick={() => handleDeleteContact(id)}
         >
           Delete
-        </button>
+        </button> */}
       </div>
     </>
   );

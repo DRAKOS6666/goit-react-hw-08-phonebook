@@ -9,7 +9,6 @@ import './ContactList.scss';
 function ContactList() {
   const filter = useSelector(contactsSelectors.getFilter);
   const error = useSelector(contactsSelectors.getError);
-  const isLoading = useSelector(contactsSelectors.getIsLoading);
   const filteredContacts = useSelector(contactsSelectors.filteredContactsMemo);
 
   return filteredContacts.length === 0 ? (
@@ -21,20 +20,16 @@ function ContactList() {
           Was finded <span>{filteredContacts.length}</span> contact(s)
         </h3>
       )}
-      {!isLoading ? (
-        error ? (
-          <h3>Sorry, an error occurred: {error}</h3>
-        ) : (
-          <ul className="contactList">
-            {filteredContacts.map(contact => (
-              <li className="contactListItem" key={contact.id}>
-                <ContactListItem contact={contact} />
-              </li>
-            ))}
-          </ul>
-        )
+      {error ? (
+        <h3>Sorry, an error occurred: {error}</h3>
       ) : (
-        <h3>LOADING...</h3>
+        <ul className="contactList">
+          {filteredContacts.map(contact => (
+            <li className="contactListItem" key={contact.id}>
+              <ContactListItem contact={contact} />
+            </li>
+          ))}
+        </ul>
       )}
     </>
   );

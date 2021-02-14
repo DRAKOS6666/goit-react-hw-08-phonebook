@@ -1,31 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
 import { BrowserRouter } from 'react-router-dom';
-
 import { ToastContainer } from 'react-toastify';
-import store from './redux/store';
 import { Provider } from 'react-redux';
+
+import App from 'components/App/App';
+import Loader from 'components/Loader/Loader';
+
+import { PersistGate } from 'redux-persist/integration/react';
+import store from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      <ToastContainer />
-    </Provider>
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
+    <PersistGate loading={<Loader />} persistor={store.persistor}>
+      <Provider store={store.store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </PersistGate>
+    <ToastContainer />
   </React.StrictMode>,
   document.getElementById('root'),
 );

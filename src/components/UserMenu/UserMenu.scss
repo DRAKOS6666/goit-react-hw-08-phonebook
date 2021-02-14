@@ -1,0 +1,29 @@
+@import 'components/App/styleVariables.scss';
+
+.userMenuContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.userName {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $primary-text;
+}
+
+p {
+  align-self: baseline;
+}
+
+.logoutBtn {
+  cursor: pointer;
+  margin-left: 10px;
+  min-width: 100px;
+  max-width: 200px;
+  height: 25px;
+  background-color: $accent-color;
+  box-shadow: 1px 1px 4px black;
+  font-weight: bold;
+  border-radius: 5px;
+}

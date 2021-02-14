@@ -34,18 +34,38 @@ const error = createReducer(null, {
   [authOperations.logoutUser.pending]: () => null,
 });
 
-const user = createReducer([], {
-  [authOperations.getCurrentUser.fulfilled]: (_, { payload }) => payload,
-  [authOperations.signupUser.fulfilled]: (state, { payload }) => [
-    ...state,
-    payload,
-  ],
-  [authOperations.logoutUser.fulfilled]: (state, { payload }) =>
-    state.filter(user => user.id !== payload),
+const user = createReducer(
+  {},
+  {
+    [authOperations.getCurrentUser.fulfilled]: (_, { payload }) => payload,
+    [authOperations.signupUser.fulfilled]: (state, { payload }) => payload.user,
+    [authOperations.loginUser.fulfilled]: (state, { payload }) => payload.user,
+    [authOperations.logoutUser.fulfilled]: () => null,
+  },
+);
+
+const token = createReducer(null, {
+  [authOperations.signupUser.fulfilled]: (_, { payload }) => payload.token,
+  [authOperations.loginUser.fulfilled]: (_, { payload }) => payload.token,
+  [authOperations.logoutUser.fulfilled]: () => null,
+});
+
+const isLoggedIn = createReducer(false, {
+  [authOperations.signupUser.fulfilled]: () => true,
+  [authOperations.loginUser.fulfilled]: () => true,
+  [authOperations.getCurrentUser.fulfilled]: () => true,
+
+  [authOperations.logoutUser.fulfilled]: () => false,
+  [authOperations.logoutUser.rejected]: () => false,
+  [authOperations.getCurrentUser.rejected]: () => false,
+  [authOperations.signupUser.rejected]: () => false,
+  [authOperations.loginUser.rejected]: () => false,
 });
 
 export default combineReducers({
   user,
   isLoading,
   error,
+  token,
+  isLoggedIn,
 });
