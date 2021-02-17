@@ -5,7 +5,10 @@ import { authOperations, authSelectors } from 'redux/auth';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Login/Login.scss';
+import ButtonMUI from 'components/ButtonMUI/ButtonMUI';
+import AddIcon from '@material-ui/icons/Add';
+import TitleApp from 'components/TittleApp.js/TitleApp';
+
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -25,39 +28,40 @@ const Register = () => {
     dispatch(authOperations.signupUser({ name, email, password }));
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
+    <>
+      <TitleApp />
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
         <input
-          autoFocus
-          required
-          type="text"
-          onChange={e => setName(e.target.value)}
-          placeholder="Enter your Name"
-        />
-      </label>
-      <label>
-        E-mail:
+            autoFocus
+            required
+            type="text"
+            onChange={e => setName(e.target.value)}
+            placeholder="Enter your Name"
+          />
+        </label>
+        <label>
+          E-mail:
         <input
-          type="text"
-          required
-          onChange={e => setEmail(e.target.value)}
-          placeholder="Enter your E-mail"
-        />
-      </label>
-      <label>
-        Password:
+            type="text"
+            required
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Enter your E-mail"
+          />
+        </label>
+        <label>
+          Password:
         <input
-          type="password"
-          required
-          onChange={e => setPassword(e.target.value)}
-          placeholder="Enter your Password"
-        />
-      </label>
-      <button type="submit" className="submitBtn">
-        Register
-      </button>
-    </form>
+            type="password"
+            required
+            onChange={e => setPassword(e.target.value)}
+            placeholder="Enter your Password"
+          />
+        </label>
+        <ButtonMUI text="Register" type="submit" startIcon={<AddIcon />} />
+      </form>
+    </>
   );
 };
 export default Register;

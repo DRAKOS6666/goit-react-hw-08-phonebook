@@ -1,19 +1,5 @@
 @import 'components/App/styleVariables.scss';
 
-.deleteContactBtn {
-  width: 50px;
-  height: 25px;
-  align-self: center;
-  font-size: 0.6rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: $light-primary-color;
-  background-color: #f44336;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px black;
-  cursor: pointer;
-}
-
 .contactName {
   display: block;
   padding-right: 4px;
@@ -32,27 +18,27 @@
 }
 
 .buttonsWrapper {
+  
   display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: nowrap;
   text-align: center;
+
+   
 }
 
 .callRef {
-  visibility: hidden;
   text-decoration: none;
   color: $secondary-text;
-  margin-right: 3px;
+  position: relative;
+  
 
-  &::before {
-    visibility: visible;
-    content: url('../../../../icons/phone-call.svg');
-    width: 20px;
-    height: 20px;
-    position: relative;
-    top: 5px;
-  }
-  &:hover {
-    visibility: visible;
+  &:hover::before {
+    content: "Call";
+    display: inline-block;
+    position: absolute;
+    top: -15px;
+    left: 7px
   }
 }

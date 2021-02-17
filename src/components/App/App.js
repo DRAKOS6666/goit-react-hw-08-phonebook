@@ -1,16 +1,15 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { authOperations, authSelectors } from 'redux/auth';
+import { authOperations } from 'redux/auth';
 
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
-import AuthNav from 'components/AuthNav/AuthNav';
-import UserMenu from 'components/UserMenu/UserMenu';
 import Loader from 'components/Loader/Loader';
 
 import 'views/Home/Home.scss';
 import './App.scss';
+import NavTabs from 'components/NavTabs/NavTabs';
 
 const Home = lazy(() =>
   import('views/Home/Home' /* webpackChunkName: "Home" */),
@@ -26,16 +25,15 @@ const Register = lazy(() =>
 );
 
 function App() {
-  const isAuth = useSelector(authSelectors.getIsAuthUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="wrapper">
-      <nav className="navBar">{isAuth ? <UserMenu /> : <AuthNav />}</nav>
+      <NavTabs />
       <Suspense fallback={<Loader />}>
         <Switch>
           <Route path="/" exact>

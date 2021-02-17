@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Redirect, Route } from 'react-router-dom';
 import { authSelectors } from 'redux/auth';
 
 const PublicRoute = ({ component: Component, redirectTo, ...routeProps }) => {
@@ -12,8 +12,8 @@ const PublicRoute = ({ component: Component, redirectTo, ...routeProps }) => {
         isAuth && routeProps.restricted ? (
           <Redirect to={redirectTo} />
         ) : (
-          <Component {...props} />
-        )
+            <Component {...props} />
+          )
       }
     />
   );

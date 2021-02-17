@@ -5,7 +5,7 @@ import { contactsSelectors, contactsOperations } from 'redux/contacts';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
-import { NavLink } from 'react-router-dom';
+import TitleApp from 'components/TittleApp.js/TitleApp';
 
 const Contacts = () => {
   const error = useSelector(contactsSelectors.getError);
@@ -18,16 +18,8 @@ const Contacts = () => {
 
   return (
     <>
-      
-      <NavLink
-          activeStyle={{ color: '#0288D1' }}
-          to="/"
-          exact
-        >
-          <h1>DRAKOS Phonebook</h1>
-        </NavLink>
+      <TitleApp />
       <ContactForm />
-
       <h2>
         Contacts: <span className="contactsTittle">{contacts.length}</span>
       </h2>
@@ -40,8 +32,8 @@ const Contacts = () => {
       ) : error ? (
         <h3>Contacts download failed</h3>
       ) : (
-        <h3>Please add contacts...</h3>
-      )}
+            <h3>Please add contacts...</h3>
+          )}
     </>
   );
 };

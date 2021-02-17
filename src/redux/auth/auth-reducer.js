@@ -1,6 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-// import * as actions from './contacts-actions';
 
 import { authOperations } from 'redux/auth';
 

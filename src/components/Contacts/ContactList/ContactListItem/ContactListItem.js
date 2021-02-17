@@ -8,12 +8,23 @@ import { toast } from 'react-toastify';
 import './ContactListItem.scss';
 
 
+import CallIcon from '@material-ui/icons/Call';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  iconButton: {
+    color: "#04ff00"
+  }
+}));
 
 function ContactListItem({ contact }) {
-  const classes = makeStyles();
+  const classes = useStyles();
   const { id, name, number } = contact;
   const dispatch = useDispatch();
   const filter = useSelector(contactsSelectors.getFilter);
@@ -42,11 +53,14 @@ function ContactListItem({ contact }) {
           textToHighlight={number}
         />
       </span>
-      <div className="buttonsWrapper">
-        <a className="callRef" href={'tel:' + number}>
-          Call
-        </a>
-        <Button
+      <a className="callRef" href={'tel:' + number}>
+        <div className="buttonsWrapper">
+          <IconButton className={classes.iconButton} aria-label="add an alarm">
+            <CallIcon />
+          </IconButton>
+        </div>
+      </a>
+      <Button
         variant="contained"
         color="secondary"
         className={classes.button}
@@ -55,13 +69,7 @@ function ContactListItem({ contact }) {
       >
         Delete
       </Button>
-        {/* <button
-          className="deleteContactBtn"
-          onClick={() => handleDeleteContact(id)}
-        >
-          Delete
-        </button> */}
-      </div>
+
     </>
   );
 }

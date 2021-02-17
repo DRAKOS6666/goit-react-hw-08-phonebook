@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
 
+
 import './ContactForm.scss';
 
 import { toast } from 'react-toastify';
@@ -10,6 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import ButtonMUI from 'components/ButtonMUI/ButtonMUI';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -79,7 +83,7 @@ function ContactForm() {
             }
           />
         </label>
-        <input className="submitBtn" type="submit" value="ADD CONTACT" />
+        <ButtonMUI type="submit" text="Add Contact" startIcon={<PersonAddIcon />} />
       </form>
     </div>
   );
